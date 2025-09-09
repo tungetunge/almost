@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What is NPH? – NPH Charity UK</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      background: #f7f9fc;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* Accessibility Toolbar */
+    .accessibility-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      background: #0077cc;
+      color: #fff;
+      border-bottom: 1px solid #005fa3;
+      font-size: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .accessibility-toolbar span {
+      color: #fff;
+    }
+    .accessibility-toolbar button {
+      background: #fff;
+      color: #0077cc;
+      border: 1px solid #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .accessibility-toolbar button:hover {
+      background: #e2e6ea;
+      color: #005fa3;
+      border-color: #e2e6ea;
+    }
+
+    /* High contrast mode */
+    body.high-contrast {
+      background: #000 !important;
+      color: #fff !important;
+    }
+    body.high-contrast a {
+      color: yellow !important;
+    }
+    body.high-contrast .content-item,
+    body.high-contrast .hero,
+    body.high-contrast .support-section,
+    body.high-contrast header,
+    body.high-contrast nav#menu,
+    body.high-contrast footer {
+      background: #222 !important;
+      color: #fff !important;
+      border: 1px solid #fff !important;
+    }
+    body.high-contrast .highlight {
+      background: #444 !important;
+      border: 1px solid #fff !important;
+    }
+    body.high-contrast .menu-item {
+      background: #444 !important;
+    }
+    body.high-contrast .menu-item.active {
+      background: yellow !important;
+      color: black !important;
+    }
+    body.high-contrast .accessibility-toolbar {
+      background: #444 !important;
+      border-bottom: 1px solid #fff;
+    }
+    body.high-contrast .accessibility-toolbar button {
+      background: #fff !important;
+      color: #000 !important;
+      border: 1px solid #fff !important;
+    }
+    body.high-contrast .accessibility-toolbar button:hover {
+      background: yellow !important;
+      color: black !important;
+    }
+    body.high-contrast .search input {
+      background: #222 !important;
+      color: #fff !important;
+      border: 1px solid #fff !important;
+    }
+
+    /* Emergency bar */
+    .emergency-bar {
+      background: #e53935;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .emergency-bar i {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img {
+      width: 130px;
+      height: auto;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+    .search input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      width: 250px;
+      font-size: 14px;
+    }
+    .header-buttons button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      color: #fff;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+    .btn-member {
+      background: linear-gradient(135deg, #28a745, #34d058);
+    }
+    .btn-member:hover {
+      background: linear-gradient(135deg, #218838, #28a745);
+      transform: translateY(-2px);
+    }
+    .btn-donate {
+      background: linear-gradient(135deg, #0077cc, #339af0);
+    }
+    .btn-donate:hover {
+      background: linear-gradient(135deg, #005fa3, #0077cc);
+      transform: translateY(-2px);
+    }
+    .btn-contact {
+      background: linear-gradient(135deg, #ff6600, #ff8533);
+    }
+    .btn-contact:hover {
+      background: linear-gradient(135deg, #e65c00, #ff6600);
+      transform: translateY(-2px);
+    }
+
+    /* Navigation */
+    nav#menu {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #eaf4ff;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .menu-item {
+      padding: 10px 20px;
+      border-radius: 4px;
+      background: #3b3b3b;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .menu-item.active {
+      background: #0077cc;
+      color: #fff;
+    }
+    .menu-item:hover {
+      background: #555;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fff;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .hero h1 {
+      font-size: 32px;
+      color: #0077cc;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 20px;
+      color: #333;
+    }
+    .highlight {
+      background: #f4f7ff;
+      border: 1px solid #d6e0ff;
+      padding: 12px;
+      border-radius: 10px;
+      margin: 0 auto 20px;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    /* Main Content */
+    main {
+      padding: 0 16px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .content-section {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    .content-section h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .content-item {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+    .content-item h3 {
+      color: #0056b3;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .content-item ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .content-item ul li {
+      margin: 10px 0;
+      padding-left: 28px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .content-item ul li::before {
+      content: "✔";
+      color: #2ecc71;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .content-section p {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+    .support-section {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .support-section a {
+      color: #ff6600;
+      text-decoration: none;
+    }
+    .support-section a:hover {
+      text-decoration: underline;
+    }
+
+    /* Educational Symptom Checker */
+    .checker-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .checker-card h2 {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      color: #333;
+    }
+    .checker-card h2::before {
+      content: "ℹ️";
+      margin-right: 8px;
+    }
+    .checker-card p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .checker-card input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .checker-card .question {
+      margin: 15px 0;
+    }
+    .checker-card .btn-group {
+      margin-top: 5px;
+    }
+    .checker-card .btn {
+      border: 1px solid #007bff;
+      background: #fff;
+      color: #007bff;
+      padding: 6px 15px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .checker-card .btn:hover {
+      background: #007bff;
+      color: #fff;
+    }
+    .checker-card .btn.selected {
+      background: #007bff;
+      color: #fff;
+    }
+    .checker-card .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: #4a90e2;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .checker-card .submit-btn:hover {
+      background: #357abd;
+    }
+    .checker-card .result-box {
+      background: #eef6ff;
+      border: 1px solid #b3d8ff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin: auto;
+    }
+    .checker-card .result-box h3 {
+      color: #0056b3;
+      margin-bottom: 8px;
+    }
+    .checker-card .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .checker-card .action-buttons .btn-green {
+      background: #28a745;
+      color: #fff;
+      border: none;
+    }
+    .checker-card .action-buttons .btn-blue {
+      background: #007bff;
+      color: #fff;
+      border: none;
+    }
+    .next-steps {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    .next-steps h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    .next-steps ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 40px;
+      margin-top: 40px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .footer-about h2 {
+      margin-top: 0;
+      color: #0077cc;
+    }
+    .footer-links h3 {
+      margin-top: 0;
+      color: #28a745;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links ul li {
+      margin-bottom: 8px;
+    }
+    .footer-links ul li a {
+      text-decoration: none;
+      color: #ff6600;
+    }
+    .footer-links ul li a:hover {
+      text-decoration: underline;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #555;
+      padding-top: 15px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Accessibility Toolbar -->
+  <div class="accessibility-toolbar">
+    <span>Accessibility: Date: Monday, September 08, 2025 | Time: 03:39 AM PDT</span>
+    <button id="decrease-font" aria-label="Decrease text size">T−</button>
+    <button id="increase-font" aria-label="Increase text size">T+</button>
+    <button id="toggle-contrast" aria-label="Toggle high contrast">🌓 High Contrast</button>
+    <button id="readAloud" aria-label="Read aloud content">🔊 Read Aloud</button>
+  </div>
+
+  <div class="emergency-bar">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <strong>Emergency:</strong> If symptoms are sudden or severe, call 999. For non-urgent advice, call NHS 111 or your GP.
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="https://i.postimg.cc/C1YDNWZB/NPH-logo.png" alt="NPH Charity Logo" class="logo-img">
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search..." id="searchInput"/>
+    </div>
+    <div class="header-buttons">
+      <button class="btn-member">Become a member</button>
+      <button class="btn-donate" id="donateButton">Donate</button>
+      <button class="btn-contact" id="contactbtn">Contact us</button>
+    </div>
+  </header>
+
+  <nav id="menu">
+    <a href="index.html" class="menu-item">Home</a>
+    <a href="what-is-nph.html" class="menu-item active">What is NPH?</a>
+    <a href="doihavenph.html" class="menu-item">Do I have NPH?</a>
+    <a href="resources.html" class="menu-item">Resources</a>
+    <a href="contact.html" class="menu-item">Contact</a>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <h1>What is Normal Pressure Hydrocephalus (NPH)?</h1>
+      <p>Normal Pressure Hydrocephalus (NPH) is a brain condition that mainly affects older adults. It's often misdiagnosed, but when recognized early, it can be successfully treated.</p>
+      <div class="highlight">
+        <p><strong>Key Fact:</strong> Early diagnosis and intervention can significantly improve quality of life.</p>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2>The Three Main Symptoms</h2>
+      <div class="content-grid">
+        <div class="content-item">
+          <h3>1. Walking Problems</h3>
+          <ul>
+            <li>Difficulty starting to walk</li>
+            <li>Shuffling or magnetic gait</li>
+            <li>Feeling unsteady or off-balance</li>
+            <li>Frequent falls or fear of falling</li>
+            <li>Wide-based stance when standing</li>
+          </ul>
+        </div>
+        <div class="content-item">
+          <h3>2. Bladder Problems</h3>
+          <ul>
+            <li>Sudden urgent need to urinate</li>
+            <li>Frequent urination</li>
+            <li>Loss of bladder control (incontinence)</li>
+            <li>Getting up at night to urinate</li>
+          </ul>
+          <p style="font-size: 12px; color:#777; margin-top:10px;">
+            <b>Note:</b> Bladder problems are often the first symptom to appear.
+          </p>
+        </div>
+        <div class="content-item">
+          <h3>3. Memory & Thinking Changes</h3>
+          <ul>
+            <li>Mild memory problems</li>
+            <li>Difficulty concentrating</li>
+            <li>Slower thinking or responses</li>
+            <li>Mood changes or apathy</li>
+            <li>Less interest in activities</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2>Causes</h2>
+      <div class="content-grid">
+        <div class="content-item">
+          <h3>Idiopathic NPH (iNPH)</h3>
+          <ul>
+            <li>No clear cause, common in adults over 60</li>
+            <li>Possibly linked to aging or CSF flow issues</li>
+          </ul>
+        </div>
+        <div class="content-item">
+          <h3>Secondary NPH</h3>
+          <ul>
+            <li>Caused by head injury, surgery, or infection</li>
+            <li>Linked to brain bleeding (e.g., subarachnoid hemorrhage)</li>
+          </ul>
+        </div>
+      </div>
+      <p>In both cases, CSF buildup enlarges ventricles, compressing brain tissue and causing symptoms.</p>
+    </div>
+
+    <div class="content-section">
+      <h2>Diagnosis</h2>
+      <div class="content-grid">
+        <div class="content-item">
+          <h3>Clinical Assessment</h3>
+          <ul>
+            <li>Evaluates Hakim’s triad via history and exam</li>
+          </ul>
+        </div>
+        <div class="content-item">
+          <h3>Brain Imaging</h3>
+          <ul>
+            <li>CT/MRI to detect ventriculomegaly</li>
+            <li>Uses Evans Index for measurement</li>
+          </ul>
+        </div>
+        <div class="content-item">
+          <h3>Lumbar Puncture</h3>
+          <ul>
+            <li>Tap test to assess gait improvement</li>
+          </ul>
+        </div>
+        <div class="content-item">
+          <h3>CSF Drainage Tests</h3>
+          <ul>
+            <li>Extended drainage to predict shunt response</li>
+          </ul>
+        </div>
+      </div>
+      <p>Accurate diagnosis is vital to distinguish NPH from other neurodegenerative disorders.</p>
+    </div>
+
+    <div class="content-section">
+      <h2>Treatment</h2>
+      <div class="content-grid">
+        <div class="content-item">
+          <h3>Shunt Surgery</h3>
+          <ul>
+            <li>Drains excess CSF to the abdomen</li>
+            <li>Improves gait in many patients</li>
+          </ul>
+        </div>
+        <div class="content-item">
+          <h3>Monitoring</h3>
+          <ul>
+            <li>Regular check-ups for shunt function</li>
+          </ul>
+        </div>
+        <div class="content-item">
+          <h3>Supportive Care</h3>
+          <ul>
+            <li>Physical therapy and cognitive rehab</li>
+            <li>Bladder management support</li>
+          </ul>
+        </div>
+      </div>
+      <p>Early intervention, especially in idiopathic NPH, offers the best outcomes.</p>
+    </div>
+
+    <div class="checker-card" id="checker">
+      <div id="form-section">
+        <h2>Educational Symptom Checker</h2>
+        <p>This tool is for educational purposes only and is not a medical diagnosis. Always consult with your GP for proper medical evaluation.</p>
+        
+        <label>What is your age?</label>
+        <input type="number" id="age" placeholder="Enter your age">
+        
+        <div class="question">
+          <p>Do you have walking problems or balance issues?</p>
+          <div class="btn-group">
+            <button class="btn" data-q="walk" data-val="yes">Yes</button>
+            <button class="btn" data-q="walk" data-val="no">No</button>
+          </div>
+        </div>
+        
+        <div class="question">
+          <p>Do you have bladder control problems?</p>
+          <div class="btn-group">
+            <button class="btn" data-q="bladder" data-val="yes">Yes</button>
+            <button class="btn" data-q="bladder" data-val="no">No</button>
+          </div>
+        </div>
+        
+        <div class="question">
+          <p>Do you have memory or thinking changes?</p>
+          <div class="btn-group">
+            <button class="btn" data-q="memory" data-val="yes">Yes</button>
+            <button class="btn" data-q="memory" data-val="no">No</button>
+          </div>
+        </div>
+        
+        <button class="submit-btn" id="submitBtn">Get Educational Result</button>
+      </div>
+      
+      <div id="result" style="display:none;"></div>
+    </div>
+
+    <div class="next-steps" id="nextSteps" style="display:none;">
+      <h3>What Should I Do Next?</h3>
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+        <div>
+          <h4>If You Have Symptoms:</h4>
+          <ul>
+            <li>Book an appointment with your GP</li>
+            <li>Keep a symptom diary</li>
+            <li>Use our GP checklist to prepare</li>
+            <li>Bring a family member or friend for support</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Learn More:</h4>
+          <ul>
+            <li>UK NPH Pathway</li>
+            <li>Treatment Decision Aid</li>
+            <li>Find NPH Clinics</li>
+            <li>Support Events</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="support-section">
+      <h2>Get Support</h2>
+      <p>NPH Charity UK is here to help. Contact us for resources and guidance:</p>
+      <p><strong>Helpline:</strong> 0800 123 4567 | <strong>Email:</strong> <a href="mailto:info@nphcharity.org.uk">info@nphcharity.org.uk</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <h2>NPH Charity UK</h2>
+        <p>Supporting people affected by Normal Pressure Hydrocephalus with information, guidance, and advocacy.</p>
+        <p>
+          <strong>Helpline:</strong> 0800 123 4567<br/>
+          <strong>Email:</strong> info@nphcharity.org.uk<br/>
+          <strong>Contact:</strong> Contact Form
+        </p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="what-is-nph.html">What is NPH?</a></li>
+          <li><a href="doihavenph.html">Do I have NPH?</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 NPH Charity UK. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Accessibility controls
+      let fontSize = 16;
+
+      document.getElementById("increase-font").addEventListener("click", () => {
+        fontSize += 2;
+        document.body.style.fontSize = fontSize + "px";
+      });
+
+      document.getElementById("decrease-font").addEventListener("click", () => {
+        if (fontSize > 10) {
+          fontSize -= 2;
+          document.body.style.fontSize = fontSize + "px";
+        }
+      });
+
+      document.getElementById("toggle-contrast").addEventListener("click", () => {
+        document.body.classList.toggle("high-contrast");
+      });
+
+      // Navigation functionality
+      document.querySelectorAll('#menu .menu-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          const href = item.getAttribute('href');
+          if (href === 'index.html' || href === 'what-is-nph.html' || href === 'doihavenph.html' || href === 'resources.html' || href === 'contact.html') {
+            window.location.href = href;
+          } else if (href === '#') {
+            e.preventDefault();
+            alert('Page under construction. Check back later!');
+          }
+        });
+      });
+
+      // Set active navigation item
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('#menu .menu-item').forEach(item => {
+        if (item.getAttribute('href') === currentPath) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // Search functionality
+      const searchInput = document.getElementById('searchInput');
+      const contentItems = document.querySelectorAll('.content-item');
+
+      searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        contentItems.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          if (searchTerm === '' || text.includes(searchTerm)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+
+      // Read Aloud functionality
+      const readAloudButton = document.getElementById('readAloud');
+      const synth = window.speechSynthesis;
+      let voices;
+
+      function populateVoices() {
+        voices = synth.getVoices();
+      }
+
+      function speakContent() {
+        if (synth.speaking) {
+          synth.cancel();
+        }
+
+        const heroContent = [
+          document.querySelector('.hero h1').textContent,
+          document.querySelector('.hero p').textContent,
+          document.querySelector('.highlight p').textContent
+        ].join('. ');
+
+        const contentItems = Array.from(document.querySelectorAll('.content-item h3, .content-item ul li, .content-item p'))
+          .map(element => element.textContent)
+          .join('. ');
+
+        const utterance = new SpeechSynthesisUtterance(heroContent + '. ' + contentItems);
+        utterance.voice = voices.find(voice => voice.lang === 'en-US') || voices[0];
+        utterance.rate = 1;
+        utterance.pitch = 1;
+
+        synth.speak(utterance);
+      }
+
+      readAloudButton.addEventListener('click', speakContent);
+
+      // Populate voices when available
+      synth.onvoiceschanged = populateVoices;
+      populateVoices();
+
+      // Educational Symptom Checker functionality
+      const answers = { walk: null, bladder: null, memory: null };
+
+      document.querySelectorAll(".btn").forEach(btn => {
+        btn.addEventListener("click", function() {
+          const q = this.getAttribute("data-q");
+          answers[q] = this.getAttribute("data-val");
+          this.parentNode.querySelectorAll(".btn").forEach(b => b.classList.remove("selected"));
+          this.classList.add("selected");
+        });
+      });
+
+      document.getElementById("submitBtn").addEventListener("click", function() {
+        const age = document.getElementById("age").value;
+        const resultDiv = document.getElementById("result");
+        const formSection = document.getElementById("form-section");
+
+        if (!age || !answers.walk || !answers.bladder || !answers.memory) {
+          alert("Please answer all questions and enter your age.");
+          return;
+        }
+
+        let message = "";
+        if (answers.walk === "yes" && answers.bladder === "yes" && answers.memory === "yes") {
+          message = "<h3>Possible Symptoms of NPH</h3><p>Your answers suggest that you may have multiple symptoms associated with NPH. Please consult your GP for further evaluation.</p>";
+        } else {
+          message = "<h3>Keep Monitoring Your Symptoms</h3><p>While your symptoms could have many causes, it’s worth keeping track of any changes and discussing them with your GP if they worsen or if new symptoms develop.</p>";
+        }
+
+        formSection.style.display = "none";  // hide form
+        resultDiv.style.display = "block";  // show result
+        resultDiv.innerHTML = `
+          <div class="result-box">
+            ${message}
+            <div class="action-buttons">
+              <button class="btn btn-green">Get Support & Help</button>
+              <button class="btn btn-blue" onclick="location.reload()">Take Checker Again</button>
+            </div>
+          </div>
+        `;
+        document.getElementById("nextSteps").style.display = "block";
+      });
+    });
+    // Donate button navigation
+    document.getElementById('donateButton').addEventListener('click', () => {
+      window.location.href = 'donations.html';
+    });
+    // contact button navigation
+    document.getElementById('contactbtn').addEventListener('click', () => {
+      window.location.href = 'contact.html';
+    });
+  </script>
+</body>
+</html>
+

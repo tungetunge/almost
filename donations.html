@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate – NPH Charity UK</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      background: #f7f9fc;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* Accessibility Toolbar */
+    .accessibility-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      background: #0077cc;
+      color: #fff;
+      border-bottom: 1px solid #005fa3;
+      font-size: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .accessibility-toolbar span {
+      color: #fff;
+    }
+    .accessibility-toolbar button {
+      background: #fff;
+      color: #0077cc;
+      border: 1px solid #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .accessibility-toolbar button:hover {
+      background: #e2e6ea;
+      color: #005fa3;
+      border-color: #e2e6ea;
+    }
+
+    /* High contrast mode */
+    body.high-contrast {
+      background: #000 !important;
+      color: #fff !important;
+    }
+    body.high-contrast a {
+      color: yellow !important;
+    }
+    body.high-contrast .content-item,
+    body.high-contrast .hero,
+    body.high-contrast .donation-box,
+    body.high-contrast .info-box,
+    body.high-contrast header,
+    body.high-contrast nav#menu,
+    body.high-contrast footer {
+      background: #222 !important;
+      color: #fff !important;
+      border: 1px solid #fff !important;
+    }
+    body.high-contrast .highlight {
+      background: #444 !important;
+      border: 1px solid #fff !important;
+    }
+    body.high-contrast .menu-item {
+      background: #444 !important;
+    }
+    body.high-contrast .menu-item.active {
+      background: yellow !important;
+      color: black !important;
+    }
+    body.high-contrast .accessibility-toolbar {
+      background: #444 !important;
+      border-bottom: 1px solid #fff;
+    }
+    body.high-contrast .accessibility-toolbar button {
+      background: #fff !important;
+      color: #000 !important;
+      border: 1px solid #fff !important;
+    }
+    body.high-contrast .accessibility-toolbar button:hover {
+      background: yellow !important;
+      color: black !important;
+    }
+    body.high-contrast .search input {
+      background: #222 !important;
+      color: #fff !important;
+      border: 1px solid #fff !important;
+    }
+
+    /* Emergency bar */
+    .emergency-bar {
+      background: #e53935;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .emergency-bar i {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img {
+      width: 130px;
+      height: auto;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+    .search input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      width: 250px;
+      font-size: 14px;
+    }
+    .header-buttons button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      color: #fff;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+    .btn-member {
+      background: linear-gradient(135deg, #28a745, #34d058);
+    }
+    .btn-member:hover {
+      background: linear-gradient(135deg, #218838, #28a745);
+      transform: translateY(-2px);
+    }
+    .btn-donate {
+      background: linear-gradient(135deg, #0077cc, #339af0);
+    }
+    .btn-donate:hover {
+      background: linear-gradient(135deg, #005fa3, #0077cc);
+      transform: translateY(-2px);
+    }
+    .btn-contact {
+      background: linear-gradient(135deg, #ff6600, #ff8533);
+    }
+    .btn-contact:hover {
+      background: linear-gradient(135deg, #e65c00, #ff6600);
+      transform: translateY(-2px);
+    }
+
+    /* Navigation */
+    nav#menu {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #eaf4ff;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .menu-item {
+      padding: 10px 20px;
+      border-radius: 4px;
+      background: #3b3b3b;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .menu-item.active {
+      background: #0077cc;
+      color: #fff;
+    }
+    .menu-item:hover {
+      background: #555;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fff;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .hero h1 {
+      font-size: 32px;
+      color: #0077cc;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 20px;
+      color: #333;
+    }
+    .highlight {
+      background: #f4f7ff;
+      border: 1px solid #d6e0ff;
+      padding: 12px;
+      border-radius: 10px;
+      margin: 0 auto 20px;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 0 16px;
+    }
+
+    /* Left donation box */
+    .donation-box {
+      background: #fff;
+      border: 2px solid #28a745;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .donation-box h2 {
+      margin-top: 0;
+      color: #28a745;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .amount-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .amount-btn {
+      flex: 1 1 45%;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #0077cc;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #0077cc;
+      transition: all 0.2s;
+    }
+    .amount-btn:hover, .amount-btn.selected {
+      background: #0077cc;
+      color: #fff;
+    }
+    .donation-box input,
+    .donation-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .donate-btn {
+      width: 100%;
+      padding: 12px;
+      background: #28a745;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .donate-btn:hover {
+      background: #218838;
+    }
+    .donation-note {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    /* Right side sections */
+    .info-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .info-box h3 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #0077cc;
+      margin-bottom: 15px;
+    }
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .info-box ul li {
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .info-box ul li i {
+      margin-right: 8px;
+      color: #28a745;
+    }
+    .info-box p {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .info-box strong {
+      color: #333;
+    }
+    .learn-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid #0077cc;
+      color: #0077cc;
+      border-radius: 6px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .learn-btn:hover {
+      background: #0077cc;
+      color: #fff;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 40px;
+      margin-top: 40px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .footer-about h2 {
+      margin-top: 0;
+      color: #0077cc;
+    }
+    .footer-links h3 {
+      margin-top: 0;
+      color: #28a745;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links ul li {
+      margin-bottom: 8px;
+    }
+    .footer-links ul li a {
+      text-decoration: none;
+      color: #ff6600;
+    }
+    .footer-links ul li a:hover {
+      text-decoration: underline;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #555;
+      padding-top: 15px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Accessibility Toolbar -->
+  <div class="accessibility-toolbar">
+    <span>Accessibility: Date: Monday, September 08, 2025 | Time: 04:43 AM PDT</span>
+    <button id="decrease-font" aria-label="Decrease text size">T−</button>
+    <button id="increase-font" aria-label="Increase text size">T+</button>
+    <button id="toggle-contrast" aria-label="Toggle high contrast">🌓 High Contrast</button>
+    <button id="readAloud" aria-label="Read aloud content">🔊 Read Aloud</button>
+  </div>
+
+  <div class="emergency-bar">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <strong>Emergency:</strong> If symptoms are sudden or severe, call 999. For non-urgent advice, call NHS 111 or your GP.
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="https://i.postimg.cc/C1YDNWZB/NPH-logo.png" alt="NPH Charity Logo" class="logo-img">
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search..." id="searchInput"/>
+    </div>
+    <div class="header-buttons">
+      <button class="btn-member">Become a member</button>
+      <button class="btn-donate" id="donateButton">Donate</button>
+      <button class="btn-contact" id="contactbtn">Contact us</button>
+    </div>
+  </header>
+
+  <nav id="menu">
+    <a href="index.html" class="menu-item">Home</a>
+    <a href="what-is-nph.html" class="menu-item">What is NPH?</a>
+    <a href="doihavenph.html" class="menu-item">Do I have NPH?</a>
+    <a href="resources.html" class="menu-item">Resources</a>
+    <a href="contact.html" class="menu-item">Contact</a>
+    
+  </nav>
+
+  <main>
+    <!-- Donation Box -->
+    <div class="donation-box">
+      <h2><i class="fa-solid fa-heart" style="color:#28a745;"></i> Make a Donation</h2>
+      <div class="amount-buttons">
+        <button class="amount-btn" data-value="10">£10</button>
+        <button class="amount-btn" data-value="20">£20</button>
+        <button class="amount-btn" data-value="50">£50</button>
+        <button class="amount-btn" data-value="100">£100</button>
+      </div>
+      <input type="number" placeholder="Or enter custom amount: £0.00">
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Email Address">
+      <textarea placeholder="Message (optional)"></textarea>
+      <button class="donate-btn">Donate £0</button>
+      <p class="donation-note">This is a demonstration form. In a real implementation, donations would be processed securely via Stripe or PayPal.</p>
+    </div>
+
+    <!-- Right side info -->
+    <div>
+      <div class="info-box">
+        <h3>Your Impact</h3>
+        <ul>
+          <li><i class="fa-solid fa-phone"></i> £10 could fund 30 minutes of helpline support for someone newly diagnosed</li>
+          <li><i class="fa-solid fa-envelope"></i> £20 could fund printing and posting information packs to 10 families</li>
+          <li><i class="fa-solid fa-users"></i> £50 could fund a local support group meeting for 15 people</li>
+          <li><i class="fa-solid fa-graduation-cap"></i> £100 could fund training materials for GPs about NPH recognition</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h3>Why Your Support Matters</h3>
+        <p>NPH affects thousands of people in the UK, but awareness is still low among both the public and healthcare professionals.</p>
+        <ul>
+          <li>Many cases go undiagnosed for years</li>
+          <li>Families struggle to find reliable information</li>
+          <li>GPs need better resources to recognize NPH</li>
+          <li>Treatment can dramatically improve quality of life</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h3>Other Ways to Support Us</h3>
+        <p><strong>Volunteer:</strong> Help with our helpline or local events</p>
+        <p><strong>Fundraise:</strong> Organize a coffee morning or sponsored event</p>
+        <p><strong>Share:</strong> Tell others about NPH and our charity</p>
+        <p><strong>Corporate partnerships:</strong> Connect us with your employer</p>
+        <a href="#" class="learn-btn">Learn About Volunteering</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <h2>NPH Charity UK</h2>
+        <p>Supporting people affected by Normal Pressure Hydrocephalus with information, guidance, and advocacy.</p>
+        <p>
+          <strong>Helpline:</strong> 0800 123 4567<br/>
+          <strong>Email:</strong> info@nphcharity.org.uk<br/>
+          <strong>Contact:</strong> Contact Form
+        </p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="what-is-nph.html">What is NPH?</a></li>
+          <li><a href="doihavenph.html">Do I have NPH?</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="donate.html">Donate</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 NPH Charity UK. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Accessibility controls
+      let fontSize = 16;
+
+      document.getElementById("increase-font").addEventListener("click", () => {
+        fontSize += 2;
+        document.body.style.fontSize = fontSize + "px";
+      });
+
+      document.getElementById("decrease-font").addEventListener("click", () => {
+        if (fontSize > 10) {
+          fontSize -= 2;
+          document.body.style.fontSize = fontSize + "px";
+        }
+      });
+
+      document.getElementById("toggle-contrast").addEventListener("click", () => {
+        document.body.classList.toggle("high-contrast");
+      });
+
+      // Navigation functionality
+      document.querySelectorAll('#menu .menu-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          const href = item.getAttribute('href');
+          if (href === 'index.html' || href === 'what-is-nph.html' || href === 'doihavenph.html' || href === 'resources.html' || href === 'contact.html' || href === 'donate.html') {
+            window.location.href = href;
+          } else if (href === '#') {
+            e.preventDefault();
+            alert('Page under construction. Check back later!');
+          }
+        });
+      });
+
+      // Set active navigation item
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('#menu .menu-item').forEach(item => {
+        if (item.getAttribute('href') === currentPath) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // Search functionality
+      const searchInput = document.getElementById('searchInput');
+      const infoItems = document.querySelectorAll('.info-box ul li');
+
+      searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        infoItems.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          if (searchTerm === '' || text.includes(searchTerm)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+
+      // Read Aloud functionality
+      const readAloudButton = document.getElementById('readAloud');
+      const synth = window.speechSynthesis;
+      let voices;
+
+      function populateVoices() {
+        voices = synth.getVoices();
+      }
+
+      function speakContent() {
+        if (synth.speaking) {
+          synth.cancel();
+        }
+
+        const utterance = new SpeechSynthesisUtterance(document.querySelector('.donation-box h2').textContent + '. ' + 
+          Array.from(document.querySelectorAll('.info-box h3, .info-box ul li, .info-box p')).map(element => element.textContent).join('. '));
+        utterance.voice = voices.find(voice => voice.lang === 'en-US') || voices[0];
+        utterance.rate = 1;
+        utterance.pitch = 1;
+
+        synth.speak(utterance);
+      }
+
+      readAloudButton.addEventListener('click', speakContent);
+
+      // Populate voices when available
+      synth.onvoiceschanged = populateVoices;
+      populateVoices();
+
+      // Donation amount selection
+      let selectedAmount = null;
+      const donateBtn = document.querySelector('.donate-btn');
+      const customInput = document.querySelector('.donation-box input[type="number"]');
+
+      document.querySelectorAll('.amount-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+          this.classList.add('selected');
+          selectedAmount = this.getAttribute('data-value');
+          customInput.value = '';
+          updateDonateButton();
+        });
+      });
+
+      customInput.addEventListener('input', function() {
+        document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('selected'));
+        selectedAmount = this.value;
+        updateDonateButton();
+      });
+
+      function updateDonateButton() {
+        const amount = selectedAmount ? parseFloat(selectedAmount) : 0;
+        donateBtn.textContent = `Donate £${amount.toFixed(2)}`;
+      }
+    })
+    // Donate button navigation
+    document.getElementById('donateButton').addEventListener('click', () => {
+      window.location.href = 'donations.html';
+    });
+    // contact button navigation
+    document.getElementById('contactbtn').addEventListener('click', () => {
+      window.location.href = 'contact.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resources – NPH Charity UK</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Arial', 'Helvetica Neue', sans-serif;
+      color: #333;
+      background: #f7f9fc;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* Accessibility Toolbar */
+    .accessibility-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      background: #0077cc;
+      color: #fff;
+      border-bottom: 1px solid #005fa3;
+      font-size: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .accessibility-toolbar span {
+      color: #fff;
+    }
+    .accessibility-toolbar button {
+      background: #fff;
+      color: #0077cc;
+      border: 1px solid #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .accessibility-toolbar button:hover {
+      background: #e2e6ea;
+      color: #005fa3;
+      border-color: #e2e6ea;
+    }
+
+    /* High contrast mode */
+    body.high-contrast {
+      background: #000 !important;
+      color: #fff !important;
+    }
+    body.high-contrast a {
+      color: yellow !important;
+    }
+    body.high-contrast .resource-card,
+    body.high-contrast .support-section,
+    body.high-contrast .quick-downloads,
+    body.high-contrast .cards,
+    body.high-contrast .support-card {
+      background: #222 !important;
+      color: #fff !important;
+      border: 1px solid #fff;
+    }
+    body.high-contrast header,
+    body.high-contrast nav#menu,
+    body.high-contrast footer {
+      background: #000 !important;
+      border: none;
+    }
+    body.high-contrast .menu-item {
+      background: #444 !important;
+    }
+    body.high-contrast .menu-item.active {
+      background: yellow !important;
+      color: black !important;
+    }
+    body.high-contrast .accessibility-toolbar {
+      background: #444 !important;
+      border-bottom: 1px solid #fff;
+    }
+    body.high-contrast .accessibility-toolbar button {
+      background: #fff !important;
+      color: #000 !important;
+      border: 1px solid #fff !important;
+    }
+    body.high-contrast .accessibility-toolbar button:hover {
+      background: yellow !important;
+      color: black !important;
+    }
+    body.high-contrast .search input {
+      background: #222 !important;
+      color: #fff !important;
+      border: 1px solid #fff !important;
+    }
+    body.high-contrast .search button {
+      color: yellow !important;
+    }
+    body.high-contrast .download-buttons a {
+      background: #16a34a !important;
+      color: #fff !important;
+    }
+    body.high-contrast .download-buttons a:hover {
+      background: #22c55e !important;
+    }
+    body.high-contrast .card a,
+    body.high-contrast .resource-card a,
+    body.high-contrast .support-card a {
+      background: #153eab !important;
+      color: #fff !important;
+      border-color: #fff !important;
+    }
+    body.high-contrast .card a:hover,
+    body.high-contrast .resource-card a:hover,
+    body.high-contrast .support-card a:hover {
+      background: #1d4ed8 !important;
+    }
+
+    /* Emergency bar */
+    .emergency-bar {
+      background: #e53935;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .emergency-bar i {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img {
+      width: 130px;
+      height: auto;
+    }
+    .search {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+      position: relative;
+    }
+    .search input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      width: 250px;
+      font-size: 14px;
+    }
+    .search button {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #0077cc;
+      font-size: 16px;
+      padding: 5px;
+    }
+    .search button:hover {
+      color: #005fa3;
+    }
+    .header-buttons button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      color: #fff;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+    .btn-home {
+      background: linear-gradient(135deg, #0077cc, #339af0);
+    }
+    .btn-home:hover {
+      background: linear-gradient(135deg, #005fa3, #0077cc);
+      transform: translateY(-2px);
+    }
+    .btn-member {
+      background: linear-gradient(135deg, #28a745, #34d058);
+    }
+    .btn-member:hover {
+      background: linear-gradient(135deg, #218838, #28a745);
+      transform: translateY(-2px);
+    }
+    .btn-donate {
+      background: linear-gradient(135deg, #0077cc, #339af0);
+    }
+    .btn-donate:hover {
+      background: linear-gradient(135deg, #005fa3, #0077cc);
+      transform: translateY(-2px);
+    }
+    .btn-contact {
+      background: linear-gradient(135deg, #ff6600, #ff8533);
+    }
+    .btn-contact:hover {
+      background: linear-gradient(135deg, #e65c00, #ff6600);
+      transform: translateY(-2px);
+    }
+
+    /* Navigation */
+    nav#menu {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #eaf4ff;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .menu-item {
+      padding: 10px 20px;
+      border-radius: 4px;
+      background: #3b3b3b;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .menu-item.active {
+      background: #0077cc;
+      color: #fff;
+    }
+    .menu-item:hover {
+      background: #555;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #f0f7ff, #ffffff);
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .hero h1 {
+      font-size: 32px;
+      color: #0077cc;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 20px;
+      color: #444;
+    }
+
+    /* Quick Downloads Section */
+    .quick-downloads {
+      background: #fff;
+      border: 2px solid #22c55e;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .quick-downloads h2 {
+      font-size: 18px;
+      color: #22c55e;
+      margin-bottom: 20px;
+    }
+
+    .download-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .download-buttons a {
+      background: #22c55e;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      flex: 1 1 200px;
+    }
+
+    .download-buttons a:hover {
+      background: #16a34a;
+    }
+
+    .download-buttons a small {
+      display: block;
+      font-weight: normal;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    /* Cards Section */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card .tag {
+      font-size: 13px;
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #111;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .card a {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 14px;
+      color: #1d4ed8;
+      font-weight: bold;
+      border: 1px solid #1d4ed8;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .card a:hover {
+      background: #1d4ed8;
+      color: #fff;
+    }
+
+    /* Resources Section */
+    .resources-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px 40px;
+    }
+
+    .resource-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .resource-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .resource-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .resource-card a {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 14px;
+      color: #1d4ed8;
+      font-weight: bold;
+      border: 1px solid #1d4ed8;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .resource-card a:hover {
+      background: #1d4ed8;
+      color: #fff;
+    }
+
+    /* Support Section */
+    .support-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+
+    .support-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .support-card a {
+      display: block;
+      margin: 10px auto;
+      text-decoration: none;
+      font-size: 14px;
+      color: #fff;
+      font-weight: bold;
+      background: #1d4ed8;
+      padding: 10px 14px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .support-card a:hover {
+      background: #153eab;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 40px;
+      margin-top: 40px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .footer-about h2 {
+      margin-top: 0;
+      color: #0077cc;
+    }
+    .footer-links h3 {
+      margin-top: 0;
+      color: #28a745;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links ul li {
+      margin-bottom: 8px;
+    }
+    .footer-links ul li a {
+      text-decoration: none;
+      color: #ff6600;
+    }
+    .footer-links ul li a:hover {
+      text-decoration: underline;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #555;
+      padding-top: 15px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Accessibility Toolbar -->
+  <div class="accessibility-toolbar">
+    <span>Accessibility: Date: Tuesday, September 09, 2025 | Time: 01:25 AM PDT</span>
+    <button id="decrease-font" aria-label="Decrease text size">T−</button>
+    <button id="increase-font" aria-label="Increase text size">T+</button>
+    <button id="toggle-contrast" aria-label="Toggle high contrast">🌓 High Contrast</button>
+  </div>
+
+  <div class="emergency-bar">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <strong>Emergency:</strong> If symptoms are sudden or severe, call 999. For non-urgent advice, call NHS 111 or your GP.
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="https://i.postimg.cc/C1YDNWZB/NPH-logo.png" alt="NPH Charity Logo" class="logo-img">
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search..." id="searchInput"/>
+      <button type="button" id="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="header-buttons">
+      <button class="btn-member">Become a member</button>
+      <button class="btn-donate" id="donateButton">Donate</button>
+      <button class="btn-contact" id="contactbtn">Contact us</button>
+    </div>
+  </header>
+
+  <nav id="menu">
+    <a href="index.html" class="menu-item">Home</a>
+    <a href="whatisnph.html" class="menu-item">What is NPH?</a>
+    <a href="doihavenph.html" class="menu-item">Do I have NPH?</a>
+    <a href="resources.html" class="menu-item active">Resources</a>
+    <a href="contact.html" class="menu-item">Contact</a>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <h1>Resources Hub</h1>
+      <p>Explore a variety of resources to support your understanding and management of Normal Pressure Hydrocephalus (NPH).</p>
+    </div>
+
+    <div class="quick-downloads">
+      <h2><i class="fa-solid fa-download"></i> Quick Downloads</h2>
+      <div class="download-buttons">
+        <a href="#"><i class="fa-solid fa-file-medical"></i> GP Referral Template 
+          <small>Printable form for GP visits</small>
+        </a>
+        <a href="#"><i class="fa-solid fa-notes-medical"></i> Symptom Diary 
+          <small>Track symptoms over time</small>
+        </a>
+        <a href="#"><i class="fa-solid fa-people-group"></i> Family Information Pack 
+          <small>Complete guide for families</small>
+        </a>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="tag"><i class="fa-solid fa-stethoscope"></i> Medical</span>
+        <h3>UK NPH Pathway</h3>
+        <p>Step-by-step guide from symptoms to treatment and recovery in the UK healthcare system.</p>
+        <a href="#">Learn More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+
+      <div class="card">
+        <span class="tag"><i class="fa-solid fa-hospital"></i> Medical</span>
+        <h3>Clinic Finder</h3>
+        <p>Find NHS centres and specialists who diagnose and treat NPH across the UK.</p>
+        <a href="#">Learn More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+
+      <div class="card">
+        <span class="tag"><i class="fa-solid fa-notes-medical"></i> Medical</span>
+        <h3>Decision Aid</h3>
+        <p>Help understand treatment options, benefits, risks, and questions to ask your medical team.</p>
+        <a href="#">Learn More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+
+      <div class="card">
+        <span class="tag"><i class="fa-solid fa-clipboard-check"></i> Self-Assessment</span>
+        <h3>Self-Check Tools</h3>
+        <p>Symptom diaries, walking tests, and educational assessment tools.</p>
+        <a href="#">Learn More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+
+      <div class="card">
+        <span class="tag"><i class="fa-solid fa-heartbeat"></i> Recovery</span>
+        <h3>After Surgery</h3>
+        <p>Recovery timeline, what to expect, and managing valve adjustments.</p>
+        <a href="#">Learn More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+
+      <div class="card">
+        <span class="tag"><i class="fa-solid fa-scale-balanced"></i> Legal</span>
+        <h3>Driving & Benefits</h3>
+        <p>UK-specific guidance on DVLA requirements, insurance, and disability benefits.</p>
+        <a href="#">Learn More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </div>
+
+    <div class="resources-section">
+      <div class="resource-card">
+        <h3>Carer & Legal</h3>
+        <p>Support for carers, power of attorney, and advance care planning.</p>
+        <a href="#">Learn More</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>Research & Trials</h3>
+        <p>How to get involved in NPH research and find current clinical trials.</p>
+        <a href="#">Learn More</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>Global Locator</h3>
+        <p>Find programmable valve centres across Europe for CHPV and Certas valve patients.</p>
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+
+    <div class="support-section">
+      <div class="support-card">
+        <h3>Can't Find What You Need?</h3>
+        <p>We’re here to help. Contact our support team and we’ll find the information you need or connect you with the right specialist.</p>
+        <a href="#">Get Personal Support</a>
+        <a href="#">Send Us a Message</a>
+      </div>
+
+      <div class="support-card">
+        <h3>Stay Updated</h3>
+        <p>NPH research and treatment options continue to evolve. Stay informed with the latest developments.</p>
+        <a href="#">Join Our Newsletter</a>
+        <a href="#">Upcoming Events</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <h2>NPH Charity UK</h2>
+        <p>Supporting people affected by Normal Pressure Hydrocephalus with information, guidance, and advocacy.</p>
+        <p>
+          <strong>Helpline:</strong> 0800 123 4567<br/>
+          <strong>Email:</strong> info@nphcharity.org.uk<br/>
+          <strong>Contact:</strong> Contact Form
+        </p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="what-is-nph.html">What is NPH?</a></li>
+          <li><a href="doihavenph.html">Do I have NPH?</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 NPH Charity UK. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Accessibility controls
+    let fontSize = 16;
+
+    document.getElementById("increase-font").addEventListener("click", () => {
+      fontSize += 2;
+      document.body.style.fontSize = fontSize + "px";
+    });
+
+    document.getElementById("decrease-font").addEventListener("click", () => {
+      if (fontSize > 10) {
+        fontSize -= 2;
+        document.body.style.fontSize = fontSize + "px";
+      }
+    });
+
+    document.getElementById("toggle-contrast").addEventListener("click", () => {
+      document.body.classList.toggle("high-contrast");
+    });
+
+    // Navigation functionality
+    document.querySelectorAll('#menu .menu-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        const href = item.getAttribute('href');
+        if (href === 'index.html' || href === 'what-is-nph.html' || href === 'doihavenph.html' || href === 'resources.html' || href === 'contact.html') {
+          window.location.href = href;
+        } else if (href === '#') {
+          e.preventDefault();
+          alert('Page under construction. Check back later!');
+        }
+      });
+    });
+
+    // Set active navigation item
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('#menu .menu-item').forEach(item => {
+      if (item.getAttribute('href') === currentPath) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const resourceCards = document.querySelectorAll('.resource-card, .card, .support-card');
+
+    searchButton.addEventListener('click', () => {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      resourceCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (searchTerm === '' || text.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Quick Downloads alert
+    document.querySelectorAll(".download-buttons a").forEach(btn => {
+      btn.addEventListener("click", e => {
+        e.preventDefault();
+        alert("This will download: " + btn.innerText.trim());
+      });
+    // Donate button navigation
+    document.getElementById('donateButton').addEventListener('click', () => {
+      window.location.href = 'donations.html';
+    });
+    // contact button navigation
+    document.getElementById('contactbtn').addEventListener('click', () => {
+      window.location.href = 'contact.html';
+    });
+    });
+  </script>
