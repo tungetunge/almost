@@ -350,6 +350,7 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
+      transition: opacity 5s ease-in-out;
     }
     .circle-bg {
       position: absolute;
@@ -762,9 +763,10 @@
       <div class="circle-bg"></div>
       <div class="circle-accent"></div>
       <div class="circle-main">
-        <img src="https://i.postimg.cc/6Qf9xS3N/42dba118-8f71-48f7-b89c-3b89c389e54b.png" alt="old lady smiling">
+        <img id="heroImage" src="https://i.postimg.cc/6Qf9xS3N/42dba118-8f71-48f7-b89c-3b89c389e54b.png" alt="hero image">
       </div>
     </div>
+
   </div>
 
   <div class="nph-section">
@@ -938,5 +940,19 @@
     document.getElementById('contactbtn').addEventListener('click', () => {
       window.location.href = 'contact.html';
     });
+    // Image switching animation
+const heroImage = document.getElementById("heroImage");
+const images = [
+  "https://i.postimg.cc/6Qf9xS3N/42dba118-8f71-48f7-b89c-3b89c389e54b.png",
+  "https://i.postimg.cc/HW529N8W/0fdad223-a16f-4a16-be1c-53e1573af5de.png"
+];
+let currentIndex = 0;
+
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % images.length;
+  heroImage.src = images[currentIndex];
+}, 3000); // changes every 3 seconds
+
 
   </script>
+
