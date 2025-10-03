@@ -598,7 +598,6 @@
 <body>
   <!-- Accessibility Toolbar -->
   <div class="accessibility-toolbar">
-    <span>Accessibility: Date: Tuesday, September 09, 2025 | Time: 01:25 AM PDT</span>
     <button id="decrease-font" aria-label="Decrease text size">T−</button>
     <button id="increase-font" aria-label="Increase text size">T+</button>
     <button id="toggle-contrast" aria-label="Toggle high contrast">🌓 High Contrast</button>
@@ -619,7 +618,7 @@
     </div>
     <div class="header-buttons">
       <button class="btn-member">Become a member</button>
-      <button class="btn-donate" id="donateButton">Donate</button>
+      
       <button class="btn-contact" id="contactbtn">Contact us</button>
     </div>
   </header>
@@ -627,7 +626,7 @@
   <nav id="menu">
     <a href="index.html" class="menu-item">Home</a>
     <a href="whatisnph.html" class="menu-item">What is NPH?</a>
-    <a href="doihavenph.html" class="menu-item">Do I have NPH?</a>
+    <a href="doihavenph.html" class="menu-item">GP Diagnostics</a>
     <a href="resources.html" class="menu-item active">Resources</a>
     <a href="contact.html" class="menu-item">Contact</a>
   </nav>
@@ -827,10 +826,6 @@
         e.preventDefault();
         alert("This will download: " + btn.innerText.trim());
       });
-    // Donate button navigation
-    document.getElementById('donateButton').addEventListener('click', () => {
-      window.location.href = 'donations.html';
-    });
     // contact button navigation
     document.getElementById('contactbtn').addEventListener('click', () => {
       window.location.href = 'contact.html';
@@ -838,3 +833,4 @@
     });
 
   </script>
+
