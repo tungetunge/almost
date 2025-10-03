@@ -345,13 +345,8 @@
       z-index: 2;
       overflow: hidden;
     }
-    .circle-main img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      transition: opacity 5s ease-in-out;
-    }
+
+
     .circle-bg {
       position: absolute;
       top: -30px;
@@ -498,6 +493,8 @@
       border-radius: 8px;
       margin-bottom: 15px;
     }
+    
+
     .nph-card h3 {
       font-size: 18px;
       font-weight: bold;
@@ -517,7 +514,61 @@
     .nph-card a:hover {
       text-decoration: underline;
     }
+ /* Circle Hero Image */
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
 
+    .circle-main {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Flip container controls perspective */
+    .flip-container {
+      width: 100%;
+      height: 100%;
+      perspective: 1200px;
+      position: relative;
+    }
+
+    /* Flipper (the thing that rotates) */
+    .flipper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 1s ease-in-out;
+    }
+
+    /* Front + Back sides */
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+    }
+
+    .front img, .back img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .back {
+      transform: rotateY(180deg);
+    }
     /* call to action */
     .cta-section {
       background: #0078f2;
@@ -689,24 +740,14 @@
   .call-buttons a {
     flex: 1 1 100%;
     text-align: center;
-  }
-  .nph-card {
-    width: 100%;
-  }
-  .cta-section h2 {
-    font-size: 22px;
-  }
-  .cta-section p {
-    font-size: 14px;
-  }
-}
+  }}
 
   </style>
 </head>
 <body>
   <!-- Accessibility Toolbar -->
   <div class="accessibility-toolbar">
-    <span>Accessibility: Date: Monday, September 08, 2025 | Time: 06:03 AM PDT</span>
+    
     <button id="decrease-font" aria-label="Decrease text size">T−</button>
     <button id="increase-font" aria-label="Increase text size">T+</button>
     <button id="toggle-contrast" aria-label="Toggle high contrast">🌓 High Contrast</button>
@@ -737,7 +778,7 @@
   <nav>
     <a href="index.html" class="active">Home</a>
     <a href="whatisnph.html">What is NPH?</a>
-    <a href="doihavenph.html">Do I have NPH?</a>
+    <a href="doihavenph.html">GP Diagnostics</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -759,15 +800,20 @@
         <a href="tel:08001234567" class="btn-green">📞 Call 0800 123 4567</a>
       </div>
     </div>
-    <div class="hero-image-wrapper">
-      <div class="circle-bg"></div>
-      <div class="circle-accent"></div>
+   <div class="hero-image">
       <div class="circle-main">
-        <img id="heroImage" src="https://i.postimg.cc/6Qf9xS3N/42dba118-8f71-48f7-b89c-3b89c389e54b.png" alt="hero image">
+        <div class="flip-container">
+          <div class="flipper" id="flipper">
+            <div class="front">
+              <img src="https://i.postimg.cc/6Qf9xS3N/42dba118-8f71-48f7-b89c-3b89c389e54b.png" alt="Front">
+            </div>
+            <div class="back">
+              <img src="https://i.postimg.cc/HW529N8W/0fdad223-a16f-4a16-be1c-53e1573af5de.png" alt="Back">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-  </div>
 
   <div class="nph-section">
     <h2>Understanding NPH</h2>
@@ -814,7 +860,7 @@
           guidance, and advocacy.
         </p>
         <p>
-          <strong>Helpline:</strong> 0800 123 4567<br/>
+          
           <strong>Email:</strong> info@nphcharity.org.uk<br/>
           <strong>Contact:</strong> Contact Form
         </p>
@@ -932,28 +978,22 @@
     synth.onvoiceschanged = populateVoices;
     populateVoices();
 
-    // Donate button navigation
-    document.getElementById('donateButton').addEventListener('click', () => {
-      window.location.href = 'donations.html';
-    });
-    // contact button navigation
+        // contact button navigation
     document.getElementById('contactbtn').addEventListener('click', () => {
       window.location.href = 'contact.html';
     });
-    // Image switching animation
-const heroImage = document.getElementById("heroImage");
-const images = [
-  "https://i.postimg.cc/6Qf9xS3N/42dba118-8f71-48f7-b89c-3b89c389e54b.png",
-  "https://i.postimg.cc/HW529N8W/0fdad223-a16f-4a16-be1c-53e1573af5de.png"
-];
-let currentIndex = 0;
+     // Coin flip animation
+    const flipper = document.getElementById("flipper");
+    let flipped = false;
 
-setInterval(() => {
-  currentIndex = (currentIndex + 1) % images.length;
-  heroImage.src = images[currentIndex];
-}, 3000); // changes every 3 seconds
+    setInterval(() => {
+      flipped = !flipped;
+      flipper.style.transform = flipped ? "rotateY(180deg)" : "rotateY(0deg)";
+    }, 4000);
+
 
 
   </script>
+
 
 
